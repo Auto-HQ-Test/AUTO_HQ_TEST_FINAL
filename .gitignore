@@ -1,0 +1,10 @@
+__pycache__/
+.pytest_cache/
+autohqtest_venv/
+logs/
+tempCodeRunnerFile.py
+password.txt
+scratchboard/
+results/
+screenshots/
+configs.json/

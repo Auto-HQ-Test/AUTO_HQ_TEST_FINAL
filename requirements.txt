@@ -1,0 +1,13 @@
+colorama==0.4.6
+greenlet==3.1.1
+iniconfig==2.0.0
+packaging==24.2
+playwright==1.49.1
+pluggy==1.5.0
+pyee==12.0.0
+PyQt5==5.15.11
+PyQt5-Qt5==5.15.2
+PyQt5_sip==12.16.1
+pytest==8.3.4
+pytest-asyncio==0.25.2
+typing_extensions==4.12.2

@@ -1,0 +1,58 @@
+{
+    "modules": {
+        "test_contactUS.py": {
+            "metadata": {
+                "name": "문의하기 테스트",
+                "description": "홈페이지(https://www.fasoo.com/) 문의하기"
+            },
+            "options": {
+                "submit": false,
+                "headless": false,
+                "log": true,
+                "run": false
+            }
+        },
+        "test_microsite.py": {
+            "metadata": {
+                "name": "마이크로사이트 테스트",
+                "description": "랩소디, 랩소디 ECO, 마인드셋, DSPM 문의하기"
+            },
+            "options": {
+                "submit": false,
+                "headless": false,
+                "log": true,
+                "run": false
+            }
+        },
+        "test_cancelSubscription.py": {
+            "metadata": {
+                "name": "수신 거부 페이지 테스트",
+                "description": "수신 거부 페이지(https://www.fasoo.com/unsubscribe)"
+            },
+            "options": {
+                "submit": false,
+                "headless": false,
+                "log": true,
+                "run": false
+            }
+        },
+        "test_newLandingPage.py": {
+            "metadata": {
+                "name": "신규 문의하기 랜딩 페이지",
+                "description": "국문 - A, B, C 별로 하나씩 점검 \n                  영문 - solution, product 별로 하나씩 점검"
+            },
+            "options": {
+                "submit": false,
+                "headless": true,
+                "log": true,
+                "run": true
+            }
+        }
+    },
+    "basic": {
+        "email": true,
+        "sender_email": "jun024878@gmail.com",
+        "recipient_email": "jhseo44@fasoo.com",
+        "sender_passkey": "zzvd pege mpze nwhl"
+    }
+}
