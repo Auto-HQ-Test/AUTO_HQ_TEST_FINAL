@@ -6,7 +6,6 @@ from utils.loggers import function_logging, module_logging
 
 #####
 ## 구현 완료
-## 전송(submit) 버튼은 주석처리로 비활성화 상태
 #####
 
 @function_logging
