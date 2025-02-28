@@ -3858,7 +3858,7 @@ async def test_newLandingPage(settings, test_logger):
     """
     2025년 3월 4일 기준,
     현재 신규 랜딩 페이지가 지나치게 많아서 각 분류군 별로 페이지 1개를 무작위로 선정해 테스트를 진행하도록 되어 있습니다.
-    해당 페이지만 있는 기능으로, 자동 로그 등 기타 프로그램 기능이 정상 작동하는지는 아직 확인하지 못했습니다.
+    이는 모듈에만 있는 기능입니다.
     """
     type_a_functions = [wrapsody_contactUs_KR_Main, wrapsodySE_contactUs_KR_Main, wrapsodyDrive_contactUs_KR_Main, AIRPrivacy_contactUs_KR_Main, fdr_contactUs_KR, dspm_contactUs_KR]
     type_b_functions = [fss_contactUs_KR, fsp_contactUs_KR, fsp_contactUs_EN, fed_m_contactUs_KR, fsw_contactUs_KR, fcb_contactUs_KR, fc_br_contactUs_KR, film_contactUs_KR]
