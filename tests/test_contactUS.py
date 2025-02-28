@@ -153,9 +153,11 @@ async def home_contactUs_EN(settings, test_logger):
 
             await page.locator("iframe[title=\"Form 0\"]").content_frame.get_by_placeholder("Message *").click()
             await page.locator("iframe[title=\"Form 0\"]").content_frame.get_by_placeholder("Message *").fill("hqtest")
-
+                
             if settings.get_module_options(current_module)['submit']:
-                await page.get_by_role("button", name="submit").click()
+                # 영문 페이지에는 CAPTCHA 때문에 자동으로 접수하기가 어렵습니다.
+                # await page.get_by_role("button", name="submit").click() 
+                pass
 
 
 @module_logging
