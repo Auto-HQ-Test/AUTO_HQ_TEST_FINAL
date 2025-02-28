@@ -264,9 +264,8 @@ class ConfigurationWindow(QMainWindow):
                 h_layout = QHBoxLayout()
                 label = QLabel(key.replace('_', ' ').title() + ":")
                 label.setMinimumWidth(120)
-                
                 input_field = QLineEdit()
-                input_field.setText(value)
+                input_field.setText(str(value))
                 if 'passkey' in key:
                     input_field.setEchoMode(QLineEdit.Password)
                 
