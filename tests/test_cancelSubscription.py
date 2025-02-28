@@ -33,7 +33,9 @@ async def cancelSubscription_KR(settings, test_logger):
                 await expect(page.get_by_text("수신거부 신청 Fasoo")).to_be_visible()
                 await page.locator("#form-field-email").click()
                 await page.locator("#form-field-email").fill("hqtest@fasoo.com")
-                await page.get_by_role("button", name="수신거부 신청").click()
+
+                if settings.get_module_options(current_module)['submit']:
+                    await page.get_by_role("button", name="수신거부 신청").click()
 
 
 @function_logging
@@ -61,7 +63,9 @@ async def cancelSubscription_EN(settings, test_logger):
                 await expect(page.get_by_text("Unsubscribe Request This is")).to_be_visible()
                 await page.locator("#form-field-amex").click()
                 await page.locator("#form-field-amex").fill("hqtest@fasoo.com")
-                await page.get_by_role("button", name="Unsubscribe Request​").click()
+
+                if settings.get_module_options(current_module)['submit']:
+                    await page.get_by_role("button", name="Unsubscribe Request​").click()
 
 @module_logging
 @pytest.mark.asyncio

@@ -24,7 +24,7 @@ async def wrapsody_contactUs_KR_Main(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -79,11 +79,10 @@ async def wrapsody_contactUs_KR_Main(settings, test_logger):
                 await page11.get_by_placeholder("문의 내용* (유저 수, 미팅 일정 등을 구체적으로 남겨 주시면 더욱 신속하게 상담이 진행됩니다.)").fill("hqtest5")
                 await page11.get_by_label("온/오프라인 행사").check()
                 await page11.get_by_label("개인정보 수집 및 이용에 대해서 동의합니다").check()
-                #await page11.once("dialog", lambda dialog: dialog.dismiss())
+                #await page11.once("dialog", lambda dialog: dialog.dismiss())                
+                if settings.get_module_options(current_module)['submit']:
+                    await page11.get_by_role("button", name="상담 신청하기").click()
 
-                await page11.get_by_role("button", name="상담 신청하기").click()
-            
-                return True
    
 # type products
 @function_logging
@@ -99,7 +98,7 @@ async def wrapsody_contactUs_EN_Main(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -161,9 +160,8 @@ async def wrapsody_contactUs_EN_Main(settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
    
 # type C
 @function_logging
@@ -178,7 +176,7 @@ async def wrapsodyECO_contactUs_KR_Main(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -230,9 +228,9 @@ async def wrapsodyECO_contactUs_KR_Main(settings, test_logger):
                 await page11.get_by_placeholder("유저 수, 미팅 일정 등을 구체적으로 남겨 주시면 더욱 신속하게 상담이 진행됩니다").fill("hqtest")
                 #await page11.once("dialog", lambda dialog: dialog.dismiss())
                 await page11.get_by_label("개인정보 수집 및 이용에 대해서 동의합니다").check()
-                await page11.get_by_role("button", name="상담 신청하기").click()
 
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page11.get_by_role("button", name="상담 신청하기").click()
 
  
 # type products
@@ -248,7 +246,7 @@ async def wrapsodyECO_contactUs_EN_Main(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -291,11 +289,10 @@ async def wrapsodyECO_contactUs_EN_Main(settings, test_logger):
                 await page1.get_by_placeholder("Inquiry Details*  (For a").fill("hqtest")
                 await page1.get_by_label("Search Engine (Google, Bing,").check()
                 await page1.get_by_label("I'd like Fasoo to use my").check()
-                await page1.get_by_role("button", name="Book Now").click()
-                # await expect(page1.get_by_text("Your submission was")).to_be_visible()
-                # test_logger.info("[메인] Wrapsody eCo 문의하기[EN] - 이상 없음")
-                await browser.close()
-                return True
+
+                if settings.get_module_options(current_module)['submit']:
+                    await page1.get_by_role("button", name="Book Now").click()
+                    await expect(page1.get_by_text("Your submission was")).to_be_visible()
    
 # type A
 @function_logging
@@ -313,7 +310,7 @@ async def wrapsodySE_contactUs_KR_Main(settings, test_logger):
         async with async_playwright() as p:
             # Browser setup
             browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
             context = await browser.new_context(
@@ -363,13 +360,12 @@ async def wrapsodySE_contactUs_KR_Main(settings, test_logger):
             ]
             for checkbox in checkboxes:
                 await contact_page.get_by_label(checkbox).check()
-            # Submit button is commented out for testing
+            
             submit_button = contact_page.get_by_role("button", name="상담 신청하기")
-            # await expect(submit_button).to_be_visible()
-            # await submit_button.click()
-            # Close browser
-            await browser.close()
-            return True
+            await expect(submit_button).to_be_visible()
+            if settings.get_module_options(current_module)['submit']:
+                await submit_button.click()
+        
 
 # type A
 @function_logging
@@ -384,7 +380,7 @@ async def wrapsodyDrive_contactUs_KR_Main(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -423,7 +419,9 @@ async def wrapsodyDrive_contactUs_KR_Main(settings, test_logger):
                 await page1.get_by_placeholder("문의 내용* (유저 수, 미팅 일정 등을 구체적으로 남겨 주시면 더욱 신속하게 상담이 진행됩니다.)").fill("hqtest")
                 await page1.get_by_label("온/오프라인 행사").check()
                 await page1.get_by_label("개인정보 수집 및 이용에 대해서 동의합니다").check()
-                await page1.get_by_role("button", name="상담 신청하기").click()
+
+                if settings.get_module_options(current_module)['submit']:
+                    await page1.get_by_role("button", name="상담 신청하기").click()
         
                 
 # type products
@@ -439,7 +437,7 @@ async def wrapsodyDrive_contactUs_EN_Main(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -484,9 +482,11 @@ async def wrapsodyDrive_contactUs_EN_Main(settings, test_logger):
                 await page1.get_by_placeholder("Inquiry Details*  (For a").fill("hqtest")
                 await page1.get_by_label("Search Engine (Google, Bing,").check()
                 await page1.get_by_label("I'd like Fasoo to use my").check()
-                await page1.get_by_role("button", name="Book Now").click()
-                # await expect(page1.get_by_text("Your submission was")).to_be_visible()
-                return True
+
+                if settings.get_module_options(current_module)['submit']:
+                    await page1.get_by_role("button", name="Book Now").click()
+                    # await expect(page1.get_by_text("Your submission was")).to_be_visible()
+
 
 #type A
 @function_logging
@@ -501,7 +501,7 @@ async def AIRPrivacy_contactUs_KR_Main(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -543,8 +543,9 @@ async def AIRPrivacy_contactUs_KR_Main(settings, test_logger):
                 await page1.get_by_placeholder("문의 내용* (유저 수, 미팅 일정 등을 구체적으로 남겨 주시면 더욱 신속하게 상담이 진행됩니다.)").click()
                 await page1.get_by_label("온/오프라인 행사").check()
                 await page1.get_by_label("개인정보 수집 및 이용에 대해서 동의합니다").check()
-                await page1.get_by_role("button", name="상담 신청하기").click()
-                return True
+
+                if settings.get_module_options(current_module)['submit']:
+                    await page1.get_by_role("button", name="상담 신청하기").click()
             
 # type B
 @function_logging
@@ -559,7 +560,7 @@ async def fss_contactUs_KR( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -612,9 +613,9 @@ async def fss_contactUs_KR( settings, test_logger):
                 await page11.get_by_label("온/오프라인 행사").check()
                 await page11.get_by_label("개인정보 수집 및 이용에 대해서 동의합니다").check()
                 
-                await page11.get_by_role("button", name="상담 신청하기").click()
-                #(f"[메인] Fasoo FSS[KR] - 이상 없음")
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page11.get_by_role("button", name="상담 신청하기").click()
+
    
 # products
 @function_logging
@@ -629,7 +630,7 @@ async def fss_contactUs_EN( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -690,10 +691,8 @@ async def fss_contactUs_EN( settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                 #(f"[메인] FSS 문의하기[EN] - 이상 없음")
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
 # type B
@@ -709,7 +708,7 @@ async def fsp_contactUs_KR( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -762,10 +761,9 @@ async def fsp_contactUs_KR( settings, test_logger):
                 await page11.get_by_label("온/오프라인 행사").check()
                 await page11.get_by_label("개인정보 수집 및 이용에 대해서 동의합니다").check()
                 
-                await page11.get_by_role("button", name="상담 신청하기").click()
-                 #(f"[메인] Fasoo FSP[KR] - 이상 없음")
-                return True
-
+                if settings.get_module_options(current_module)['submit']:
+                    await page11.get_by_role("button", name="상담 신청하기").click()
+                
 
 # tyep B
 @function_logging
@@ -780,7 +778,7 @@ async def fsp_contactUs_EN( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -841,9 +839,8 @@ async def fsp_contactUs_EN( settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                 #(f"[메인] FSP 문의하기[EN] - 이상 없음")
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
                 return True
 
 
@@ -860,7 +857,7 @@ async def fed_m_contactUs_KR( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -913,17 +910,13 @@ async def fed_m_contactUs_KR( settings, test_logger):
                 await page11.get_by_label("온/오프라인 행사").check()
                 await page11.get_by_label("개인정보 수집 및 이용에 대해서 동의합니다").check()
                 
-                await page11.get_by_role("button", name="상담 신청하기").click()
-                 #(f"[메인] Fasoo FED-M[KR] - 이상 없음")
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page11.get_by_role("button", name="상담 신청하기").click()
 
 
 # type products
 @function_logging
-async def fed_m_contactUs_EN(settings, test_logger):
-
-
-     
+async def fed_m_contactUs_EN(settings, test_logger):     
         url = "https://en.fasoo.com/"
         current_module = Path(__file__).name  # 현재 모듈 이름 가져오기
         browser_type = "chromium"
@@ -933,7 +926,7 @@ async def fed_m_contactUs_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -994,9 +987,8 @@ async def fed_m_contactUs_EN(settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                 #(f"[메인] FED-M 문의하기[EN] - 이상 없음")
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
                 return True
 
 
@@ -1013,7 +1005,7 @@ async def fsw_contactUs_KR( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -1066,9 +1058,9 @@ async def fsw_contactUs_KR( settings, test_logger):
                 await page11.get_by_label("온/오프라인 행사").check()
                 await page11.get_by_label("개인정보 수집 및 이용에 대해서 동의합니다").check()
                 
-                await page11.get_by_role("button", name="상담 신청하기").click()
-                 #(f"[메인] Fasoo FSW[KR] - 이상 없음")
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page11.get_by_role("button", name="상담 신청하기").click()
+                
 
 
 
@@ -1085,7 +1077,7 @@ async def fcb_contactUs_KR( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -1138,9 +1130,8 @@ async def fcb_contactUs_KR( settings, test_logger):
                 await page11.get_by_label("온/오프라인 행사").check()
                 await page11.get_by_label("개인정보 수집 및 이용에 대해서 동의합니다").check()
                 
-                await page11.get_by_role("button", name="상담 신청하기").click()
-                 #(f"[메인] Fasoo FCB[KR] - 이상 없음")
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page11.get_by_role("button", name="상담 신청하기").click()
 
 
 # type B
@@ -1156,7 +1147,7 @@ async def fc_br_contactUs_KR( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -1209,9 +1200,9 @@ async def fc_br_contactUs_KR( settings, test_logger):
                 await page11.get_by_label("온/오프라인 행사").check()
                 await page11.get_by_label("개인정보 수집 및 이용에 대해서 동의합니다").check()
                 
-                await page11.get_by_role("button", name="상담 신청하기").click()
-                 #(f"[메인] Fasoo FR-BR[KR] - 이상 없음")
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page11.get_by_role("button", name="상담 신청하기").click()
+                 
 
 
 # type products
@@ -1227,7 +1218,7 @@ async def fc_br_contactUs_EN( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -1288,10 +1279,8 @@ async def fc_br_contactUs_EN( settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                 #(f"[메인] FC-BR 문의하기[EN] - 이상 없음")
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
 # type B
@@ -1307,7 +1296,7 @@ async def film_contactUs_KR( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -1360,9 +1349,9 @@ async def film_contactUs_KR( settings, test_logger):
                 await page11.get_by_label("온/오프라인 행사").check()
                 await page11.get_by_label("개인정보 수집 및 이용에 대해서 동의합니다").check()
                 
-                await page11.get_by_role("button", name="상담 신청하기").click()
-                 #(f"[메인] Fasoo FILM[KR] - 이상 없음")
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page11.get_by_role("button", name="상담 신청하기").click()
+                 
 
 
 # type products
@@ -1378,7 +1367,7 @@ async def film_contactUs_EN( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -1439,10 +1428,8 @@ async def film_contactUs_EN( settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                 #(f"[메인] DSPM-FILM 문의하기[EN] - 이상 없음")
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
 # type products
@@ -1459,7 +1446,7 @@ async def frv_contactUs_EN( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -1520,10 +1507,8 @@ async def frv_contactUs_EN( settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                 #(f"[메인] FRV 문의하기[EN] - 이상 없음")
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
 # type C
@@ -1539,7 +1524,7 @@ async def frv_contactUs_KR( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -1592,10 +1577,8 @@ async def frv_contactUs_KR( settings, test_logger):
                 await page11.get_by_label("온/오프라인 행사").check()
                 await page11.get_by_label("개인정보 수집 및 이용에 대해서 동의합니다").check()
                 
-                await page11.get_by_role("button", name="상담 신청하기").click()
-                 #(f"[메인] Fasoo FRV[KR] - 이상 없음")
-                return True
-
+                if settings.get_module_options(current_module)['submit']:
+                    await page11.get_by_role("button", name="상담 신청하기").click()
 
 
 # type A
@@ -1611,7 +1594,7 @@ async def fdr_contactUs_KR( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -1664,11 +1647,9 @@ async def fdr_contactUs_KR( settings, test_logger):
                 await page11.get_by_label("온/오프라인 행사").check()
                 await page11.get_by_label("개인정보 수집 및 이용에 대해서 동의합니다").check()
                 
-                await page11.get_by_role("button", name="상담 신청하기").click()
-                 #(f"[메인] Fasoo FDR[KR] - 이상 없음")
-                return True
-
-
+                if settings.get_module_options(current_module)['submit']:
+                    await page11.get_by_role("button", name="상담 신청하기").click()
+                 
 # type A 
 @function_logging
 async def dspm_contactUs_KR( settings, test_logger):
@@ -1682,7 +1663,7 @@ async def dspm_contactUs_KR( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -1735,10 +1716,9 @@ async def dspm_contactUs_KR( settings, test_logger):
                 await page11.get_by_label("온/오프라인 행사").check()
                 await page11.get_by_label("개인정보 수집 및 이용에 대해서 동의합니다").check()
                 
-                await page11.get_by_role("button", name="상담 신청하기").click()
-                 #(f"[메인] Fasoo DSPM[KR] - 이상 없음")
-                return True
-
+                if settings.get_module_options(current_module)['submit']:
+                    await page11.get_by_role("button", name="상담 신청하기").click()
+        
 
 # type products
 @function_logging
@@ -1753,7 +1733,7 @@ async def dspm_fdr_contactUs_EN( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -1814,10 +1794,8 @@ async def dspm_fdr_contactUs_EN( settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                 #(f"[메인] DSPM-FDR 문의하기[EN] - 이상 없음")
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
 # type C
@@ -1833,7 +1811,7 @@ async def crypto_contactUs_KR( settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -1886,10 +1864,8 @@ async def crypto_contactUs_KR( settings, test_logger):
                 await page11.get_by_label("온/오프라인 행사").check()
                 await page11.get_by_label("개인정보 수집 및 이용에 대해서 동의합니다").check()
                 
-                await page11.get_by_role("button", name="상담 신청하기").click()
-                 #(f"[메인] Fasoo Crypto[KR] - 이상 없음")
-                return True
-
+                if settings.get_module_options(current_module)['submit']:
+                    await page11.get_by_role("button", name="상담 신청하기").click()
 
             
 # type products    
@@ -1905,7 +1881,7 @@ async def AIRPrivacy_contactUs_EN_Main(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -1966,12 +1942,11 @@ async def AIRPrivacy_contactUs_EN_Main(settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 ##################################
-########SOULTIONS ONLY############
+########SOLUTIONS ONLY############
 ##################################
 
 # type soultions
@@ -1986,7 +1961,7 @@ async def content_virtualization_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -2046,7 +2021,8 @@ async def content_virtualization_EN(settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
                 return True
 
@@ -2063,7 +2039,7 @@ async def content_management_AI_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -2123,8 +2099,8 @@ async def content_management_AI_EN(settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
                 return True
 
 # type soultions
@@ -2139,7 +2115,7 @@ async def zero_trust_DSP_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -2199,9 +2175,9 @@ async def zero_trust_DSP_EN(settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
-                return True
 
 
 # type soultions
@@ -2216,7 +2192,7 @@ async def dspm_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -2276,9 +2252,8 @@ async def dspm_EN(settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
 
@@ -2294,7 +2269,7 @@ async def enterprise_DRM_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -2354,9 +2329,9 @@ async def enterprise_DRM_EN(settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
-                return True
 
 
 
@@ -2372,7 +2347,7 @@ async def print_security_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -2432,8 +2407,8 @@ async def print_security_EN(settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
                 return True
 
 
@@ -2450,7 +2425,7 @@ async def screen_security_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -2510,9 +2485,8 @@ async def screen_security_EN(settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
 # type soultions
@@ -2527,7 +2501,7 @@ async def cad_file_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -2587,11 +2561,8 @@ async def cad_file_EN(settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True
-
-
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
 # type soultions
@@ -2606,7 +2577,7 @@ async def cloud_security_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -2665,11 +2636,8 @@ async def cloud_security_EN(settings, test_logger):
                 await page12.get_by_label("Search Engine (Google, Bing,").check()
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
-                # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True                
-
+                if settings.get_module_options(current_module)['submit']:    
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
 # type soultions
@@ -2684,7 +2652,7 @@ async def compliance_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -2743,10 +2711,8 @@ async def compliance_EN(settings, test_logger):
                 await page12.get_by_label("Search Engine (Google, Bing,").check()
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
-                # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True    
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
 
@@ -2762,7 +2728,7 @@ async def insider_threat_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -2821,10 +2787,8 @@ async def insider_threat_EN(settings, test_logger):
                 await page12.get_by_label("Search Engine (Google, Bing,").check()
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
-                # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True    
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
 
@@ -2840,7 +2804,7 @@ async def ip_protection_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -2899,10 +2863,8 @@ async def ip_protection_EN(settings, test_logger):
                 await page12.get_by_label("Search Engine (Google, Bing,").check()
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
-                # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True    
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
 
@@ -2918,7 +2880,7 @@ async def remote_worker_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -2977,10 +2939,8 @@ async def remote_worker_EN(settings, test_logger):
                 await page12.get_by_label("Search Engine (Google, Bing,").check()
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
-                # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True    
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
 
@@ -2997,7 +2957,7 @@ async def unstructured_data_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -3055,11 +3015,10 @@ async def unstructured_data_EN(settings, test_logger):
                 await page12.get_by_placeholder("Inquiry Details*  (For a").fill("hello")
                 await page12.get_by_label("Search Engine (Google, Bing,").check()
                 await page12.get_by_label("I'd like Fasoo to use my").check()
-
-                # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True                   
+                
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
+            
 
 
 
@@ -3075,7 +3034,7 @@ async def endpoint_security_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -3134,10 +3093,9 @@ async def endpoint_security_EN(settings, test_logger):
                 await page12.get_by_label("Search Engine (Google, Bing,").check()
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
-                # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
-                return True  
 
  # type soultions
 @function_logging
@@ -3151,7 +3109,7 @@ async def business_services_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -3210,11 +3168,8 @@ async def business_services_EN(settings, test_logger):
                 await page12.get_by_label("Search Engine (Google, Bing,").check()
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
-                # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True
-
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
  # type soultions
@@ -3229,7 +3184,7 @@ async def energy_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -3289,11 +3244,8 @@ async def energy_EN(settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True
-
-
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
  # type soultions
 @function_logging
@@ -3307,7 +3259,7 @@ async def financial_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -3367,10 +3319,8 @@ async def financial_EN(settings, test_logger):
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
                 # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True
-
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
  # type soultions
@@ -3385,7 +3335,7 @@ async def healthcare_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -3444,11 +3394,8 @@ async def healthcare_EN(settings, test_logger):
                 await page12.get_by_label("Search Engine (Google, Bing,").check()
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
-                # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True
-
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
  # type soultions
@@ -3463,7 +3410,7 @@ async def insurance_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -3522,8 +3469,8 @@ async def insurance_EN(settings, test_logger):
                 await page12.get_by_label("Search Engine (Google, Bing,").check()
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
-                # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
                 return True
 
@@ -3542,7 +3489,7 @@ async def public_sector_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -3601,11 +3548,8 @@ async def public_sector_EN(settings, test_logger):
                 await page12.get_by_label("Search Engine (Google, Bing,").check()
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
-                # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True
-
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
  # type soultions
@@ -3620,7 +3564,7 @@ async def legal_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -3679,11 +3623,8 @@ async def legal_EN(settings, test_logger):
                 await page12.get_by_label("Search Engine (Google, Bing,").check()
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
-                # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True
-
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
  # type soultions
@@ -3698,7 +3639,7 @@ async def egnyte_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -3757,11 +3698,8 @@ async def egnyte_EN(settings, test_logger):
                 await page12.get_by_label("Search Engine (Google, Bing,").check()
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
-                # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True
-
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
 # type soultions
@@ -3776,7 +3714,7 @@ async def imanage_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -3835,10 +3773,9 @@ async def imanage_EN(settings, test_logger):
                 await page12.get_by_label("Search Engine (Google, Bing,").check()
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
-                # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
-                return True
 
  # type soultions
 @function_logging
@@ -3852,7 +3789,7 @@ async def manufacturing_EN(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                 )
                 context = await browser.new_context(
@@ -3911,16 +3848,18 @@ async def manufacturing_EN(settings, test_logger):
                 await page12.get_by_label("Search Engine (Google, Bing,").check()
                 await page12.get_by_label("I'd like Fasoo to use my").check()
 
-                # 상담 신청하기 버튼 클릭
-                await page12.get_by_role("button", name="Book Now").click()
-
-                return True
+                if settings.get_module_options(current_module)['submit']:
+                    await page12.get_by_role("button", name="Book Now").click()
 
 
 @module_logging
 @pytest.mark.asyncio
 async def test_newLandingPage(settings, test_logger):
-
+    """
+    2025년 3월 4일 기준,
+    현재 신규 랜딩 페이지가 지나치게 많아서 각 분류군 별로 페이지 1개를 무작위로 선정해 테스트를 진행하도록 되어 있습니다.
+    해당 페이지만 있는 기능으로, 자동 로그 등 기타 프로그램 기능이 정상 작동하는지는 아직 확인하지 못했습니다.
+    """
     type_a_functions = [wrapsody_contactUs_KR_Main, wrapsodySE_contactUs_KR_Main, wrapsodyDrive_contactUs_KR_Main, AIRPrivacy_contactUs_KR_Main, fdr_contactUs_KR, dspm_contactUs_KR]
     type_b_functions = [fss_contactUs_KR, fsp_contactUs_KR, fsp_contactUs_EN, fed_m_contactUs_KR, fsw_contactUs_KR, fcb_contactUs_KR, fc_br_contactUs_KR, film_contactUs_KR]
     type_c_functions = [wrapsodyECO_contactUs_KR_Main, frv_contactUs_KR, crypto_contactUs_KR]

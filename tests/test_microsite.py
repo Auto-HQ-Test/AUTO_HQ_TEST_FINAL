@@ -47,7 +47,9 @@ async def wrapsody_contactUs_KR(settings, test_logger):
                 await page.get_by_label("질문 / 요청").click()
                 await page.get_by_text("Fasoo 뉴스레터").click()
                 await page.get_by_label("이용약관 및 개인정보처리방침 에 동의합니다").check()
-                ##await page.get_by_role("button", name="제출하기").click()
+                
+                if settings.get_module_options(current_module)['submit']:
+                    await page.get_by_role("button", name="제출하기").click()
                 
     
 @function_logging
@@ -90,7 +92,9 @@ async def wrapsody_contactUs_EN(settings, test_logger):
                 await page.get_by_label("Questions / Requests").click()
                 await page.get_by_label("Questions / Requests").fill("h")
                 await page.get_by_text("I agree to the Terms of").click()
-                ##await page.get_by_role("button", name="Send").click()
+                
+                if settings.get_module_options(current_module)['submit']:
+                    await page.get_by_role("button", name="Send").click()
   
 
 @function_logging
@@ -134,9 +138,11 @@ async def wrapsodyECO_contactUs_KR(settings, test_logger):
                 await page.get_by_label("Fasoo 프로모션 (eDM)").check()
                 await page.get_by_label("Fasoo 뉴스레터").check()
                 await page.get_by_label("이용약관 및 개인정보처리방침 에 동의합니다").check()
-                ##await page.get_by_role("button", name="제출하기").click()
-                ##await expect(page.get_by_role("heading", name="문의가 접수 되었습니다")).to_be_visible()
-                ##await page.get_by_role("link", name="확인").click()
+
+                if settings.get_module_options(current_module)['submit']:
+                    await page.get_by_role("button", name="제출하기").click()
+                    await expect(page.get_by_role("heading", name="문의가 접수 되었습니다")).to_be_visible()
+                    await page.get_by_role("link", name="확인").click()
                 
 
 @function_logging
@@ -172,8 +178,10 @@ async def wrapsodyECO_contactUs_EN(settings, test_logger):
                 await page.get_by_label("Questions / Requests").click()
                 await page.get_by_label("Questions / Requests").fill("hqtest")
                 await page.get_by_text("I agree to the Terms of").click()
-                await page.get_by_role("button", name="Submit").click()
-                await page.get_by_role("link", name="Confirm").click()
+
+                if settings.get_module_options(current_module)['submit']:
+                    await page.get_by_role("button", name="Submit").click()
+                    await page.get_by_role("link", name="Confirm").click()
                 
    
 
@@ -209,8 +217,10 @@ async def digitalPage_contactUs_KR(settings, test_logger):
                 await page.get_by_placeholder("내용을 입력해주세요.(3000자 이내)").fill("hqtest")
                 await page.get_by_placeholder("내용을 입력해주세요.(3000자 이내)").press("Tab")
                 await page.get_by_text("이메일 수집에 동의합니다").click()
-                ##await page.get_by_role("button", name="보내기").click()
-                ##await page.get_by_role("link", name="확인").click()
+                
+                if settings.get_module_options(current_module)['submit']:
+                    await page.get_by_role("button", name="보내기").click()
+                    await page.get_by_role("link", name="확인").click()
 
                 
 
@@ -245,8 +255,10 @@ async def digitalPage_contactUs_EN(settings, test_logger):
                 page.get_by_placeholder("Enter title here.").press("Tab")
                 page.get_by_placeholder("Enter content here.").fill("hqtest")
                 page.get_by_text("I agree to the collection of").click()
-                ##await page.get_by_role("button", name="Submit").click()
-                ##await page.get_by_role("link", name="Confirm").click()"""
+                
+                if settings.get_module_options(current_module)['submit']:
+                    await page.get_by_role("button", name="Submit").click()
+                    await page.get_by_role("link", name="Confirm").click()"""
 
    
 
@@ -289,8 +301,10 @@ async def mindSAT_contactUs_KR(settings, test_logger):
                 await page.get_by_label("온/오프라인 행사").check()
                 await page.get_by_label("Fasoo 프로모션 (eDM)").check()
                 await page.get_by_label("개인정보처리방침 에 동의합니다").check()
-                await page.get_by_role("button", name="보내기").click()
-                await page.get_by_role("link", name="확인").click()
+
+                if settings.get_module_options(current_module)['submit']:
+                    await page.get_by_role("button", name="보내기").click()
+                    await page.get_by_role("link", name="확인").click()
                 
    
 
@@ -327,8 +341,10 @@ async def mindSAT_contactUs_EN(settings, test_logger):
                 await page.get_by_label("Questions / Requests").click()
                 await page.get_by_label("Questions / Requests").fill("hqtest")
                 await page.get_by_text("I agree to the collection of").click()
-                await page.get_by_role("button", name="Submit").click()
-                await page.get_by_role("link", name="Confirm").click()
+
+                if settings.get_module_options(current_module)['submit']:
+                    await page.get_by_role("button", name="Submit").click()
+                    await page.get_by_role("link", name="Confirm").click()
                
     
 
@@ -364,8 +380,10 @@ async def mktscreen_contactUs_KR(settings, test_logger):
                 await page.get_by_placeholder("회사/소속*").click()
                 await page.get_by_placeholder("회사/소속*").fill("hqtest / hqtest")
                 await page.locator("#form-field-request_msg").select_option("재택 근무 시 VPN, VDI 화면 보안")
-                ##await page.get_by_role("button", name="Submit").click()
-                ##await page.get_by_role("button", name="확인").click()
+
+                if settings.get_module_options(current_module)['submit']:
+                    await page.get_by_role("button", name="Submit").click()
+                    await page.get_by_role("button", name="확인").click()
                 
  
 
@@ -403,8 +421,10 @@ async def mktdid_contactUs_KR(settings, test_logger):
                 await page.get_by_placeholder("회사/소속*").click()
                 await page.get_by_placeholder("회사/소속*").fill("hqtest/hqtest")
                 await page.locator("#form-field-request_msg").select_option("내부 데이터 활용 컴플라이언스")
-                ##await page.get_by_role("button", name="Submit").click()
-                ##await page.get_by_role("button", name="확인").click()
+
+                if settings.get_module_options(current_module)['submit']:
+                    await page.get_by_role("button", name="Submit").click()
+                    await page.get_by_role("button", name="확인").click()
                 
   
 
@@ -440,11 +460,10 @@ async def mktcad_contactUs_KR(settings, test_logger):
                 await page.get_by_placeholder("회사/소속*").click()
                 await page.get_by_placeholder("회사/소속*").fill("hqtest/hqtest")
                 await page.locator("#form-field-request_msg").select_option("도면 보안")
-                ##await page.get_by_role("button", name="Submit").click()
-                ##await page.get_by_role("button", name="확인").click()
-            
-               
 
+                if settings.get_module_options(current_module)['submit']:
+                    await page.get_by_role("button", name="Submit").click()
+                    await page.get_by_role("button", name="확인").click()
 """
 
 @module_logging

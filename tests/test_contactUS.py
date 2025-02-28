@@ -92,11 +92,9 @@ async def home_contactUs_KR(settings, test_logger):
                     await page.locator(".etc-text").click()
                     await page.locator(".etc-text").fill("hqtest")
                 await page.get_by_label("개인정보 수집 및 이용에 대해서 동의합니다").check()
-                await page.screenshot(path="./screenshots/fasooKR.png")
-                # 문의 접수
-                ###### 이메일이 많이 갈 수 있으니 일단 주석처리
-                await page.get_by_role("button", name="보내기").click()
-                # 성공 로그 기록
+                
+                if settings.get_module_options(current_module)['submit']:
+                    await page.get_by_role("button", name="보내기").click()
 
     
 @function_logging
@@ -156,8 +154,8 @@ async def home_contactUs_EN(settings, test_logger):
             await page.locator("iframe[title=\"Form 0\"]").content_frame.get_by_placeholder("Message *").click()
             await page.locator("iframe[title=\"Form 0\"]").content_frame.get_by_placeholder("Message *").fill("hqtest")
 
-            ###### 이메일이 많이 갈 수 있으니 일단 주석처리
-            await page.get_by_role("button", name="submit").click()
+            if settings.get_module_options(current_module)['submit']:
+                await page.get_by_role("button", name="submit").click()
 
 
 @module_logging
