@@ -180,11 +180,6 @@ class TestLogger:
         report = "\n".join(lines)
         report = report.encode('utf-8').decode('utf-8')
 
-        # Email results if configured true
-        # self.console(self.basic_settings)
-        # import pdb
-        # breakpoint()
-
         if self.basic_settings['email']:
             try:
                 sender_email = self.basic_settings['sender_email']
@@ -215,7 +210,7 @@ class TestLogger:
                         print(f"Failed to send email: {send_error}")
             except Exception as e:
                 print(f"Email error: {e}")
-            return report
+        return report
 
 class LoggingContext:
     """Maintains logging state for module execution"""
