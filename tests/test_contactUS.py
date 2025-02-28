@@ -22,7 +22,7 @@ async def home_contactUs_KR(settings, test_logger):
         async with async_playwright() as p:
             if browser_type == "chromium":
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],    
                 )
                 context = await browser.new_context(
@@ -111,7 +111,7 @@ async def home_contactUs_EN(settings, test_logger):
             if browser_type == "chromium":
                 
                 browser = await p.chromium.launch(
-                    executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
+                    # executable_path="C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
                     headless=settings.get_module_options(current_module)['headless'],
                     )
             
