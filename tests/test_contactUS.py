@@ -60,7 +60,7 @@ async def home_contactUs_KR(settings, test_logger):
             await page.get_by_placeholder("연락처*").fill("01022222222")
 
             await page.get_by_placeholder("이메일*").click()
-            await page.get_by_placeholder("이메일*").fill("nately@fasoo.com")
+            await page.get_by_placeholder("이메일*").fill("hqtest@fasoo.com")
 
             # 랜덤 카테고리 선택
             categories = {0: "제품 문의", 
