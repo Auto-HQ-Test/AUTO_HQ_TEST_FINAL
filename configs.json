@@ -21,7 +21,7 @@
                 "submit": false,
                 "headless": true,
                 "log": true,
-                "run": false
+                "run": true
             }
         },
         "test_cancelSubscription.py": {
@@ -31,7 +31,7 @@
             },
             "options": {
                 "submit": false,
-                "headless": false,
+                "headless": true,
                 "log": true,
                 "run": true
             }
@@ -53,12 +53,12 @@
         "email": false,
         "sender_email": "jun024878@gmail.com",
         "recipient_email": "jhseo44@fasoo.com",
-        "sender_passkey": "zzvd pege mpze nwhl",
+        "sender_passkey": "zzhl",
         "executable_path": "C:/Users/GS/AppData/Local/ms-playwright/chromium_headless_shell-1155/chrome-win/headless_shell.exe",
         "browser_type": "chromium",
         "width": "1920",
         "height": "1080",
-        "slow_motion": 0,
+        "slow_motion": "0",
         "timeout_threshold": "10000",
         "test_email": "hqtest@fasoo.com",
         "test_phone": "01012345678"

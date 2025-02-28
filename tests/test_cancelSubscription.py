@@ -32,6 +32,8 @@ async def cancelSubscription_KR(settings, test_logger):
             context.set_default_timeout(pytest.timeout_threshold)
             page = await context.new_page()
             await page.goto(url)
+        
+        
             await expect(page.get_by_text("수신거부 신청 Fasoo")).to_be_visible()
             await page.locator("#form-field-email").click()
             await page.locator("#form-field-email").fill("hqtest@fasoo.com")
