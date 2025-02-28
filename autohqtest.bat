@@ -2,7 +2,7 @@
 setlocal EnableDelayedExpansion
 
 :: Set the project repository URL and branch
-set REPO_URL=https://github.com/Auto-HQ-Test/hqtest_gui_template_repo
+set REPO_URL=https://github.com/Auto-HQ-Test/AUTO_HQ_TEST_FINAL
 set BRANCH=main
 set INSTALL_DIR=%USERPROFILE%\auto_hqtest
 set PYTHON_VERSION=3.11.0
