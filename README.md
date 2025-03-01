@@ -91,12 +91,15 @@ playwright install
 
 ### 참고:
 작동되지 않는 테스트를 확인하거나, 새로운 테스트를 작성할 때 playwright Inspector를 사용하면 큰 도움이 됩니다.
+
 autohqtest_venv 가상환경 내에서 
 
 ```python
 set PWDEBUG=1
 pytest .tests\test_cancelSubscription.py -s
 ```
-예시로 실행하면 test_cancelSubscription.py 모듈을 Playwright Inspector 내에서 실행할 수 있습니다.
+test_cancelSubscription.py 모듈을 Playwright Inspector 내에서 실행할 수 있습니다.
+
 더 자세한 내용은 공식 문서를 참조해주세요. 
+
 https://playwright.dev/python/docs/debug
