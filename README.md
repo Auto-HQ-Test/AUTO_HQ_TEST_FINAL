@@ -80,9 +80,9 @@ Module Setting의 경우, Boolean value만 가능하며, 추가적으로 setting
 Playwright가 브라우저 테스트에 필요한 chromium executable 파일을 찾지 못하는 경우 (오류: playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at C:\users...)
 이 경우 autohqtest.bat 파일을 재실행해보시고, 안된다면 cmd에서 다음 명령어를 순차적으로 입력합니다.
 
-**cd C:\Users\{{사용자 이름}}>\auto_hqtest\autohqtest_venv\Scripts**
-**activate**
-**(파이썬 가상환경에 들어와서 (autohqtest_venv)가 보이면)**
-**playwright install**
+1. **cd C:\Users\{{사용자 이름}}>\auto_hqtest\autohqtest_venv\Scripts**
+2. **activate**
+3. **(파이썬 가상환경에 들어와서 (autohqtest_venv)가 보이면)**
+4. **playwright install**
 
 명령어를 실행했는데도 문제가 지속되면 **Test Configuration Manager** 의 Basic Settings에서 옵션 **Executable Path** 에 등재된 경로에 실제로 headless_shell.exe 파일이 있는지 확인하고 경로가 잘못되었다면 headless_shell.exe가 있는 경로로 업데이트해주세요. 
