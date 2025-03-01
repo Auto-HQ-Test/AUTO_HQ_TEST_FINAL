@@ -28,8 +28,6 @@ autohqtest.bat 파일로 테스트 프로그램을 실행합니다.
 ### 2-1. 테스트 옵션 설정
 테스트 프로그램이 시작되면, **Test Configuration Manager** 창이 나타납니다.
 
-![Alt text](images/example1.png)
-
 **Module Settings** 탭에서 각 모듈 별로 설정을 조정할 수 있습니다.
 1. **Run**: 실행 여부를 조정합니다. 비활성화하면 해당 모듈은 테스트에서 제외됩니다.
 2. **Submit**: 문의 기능 등, 실제 인사처에 문의를 보내는 내용일 때 "실제 문의를 접수하는지" 여부를 체크합니다. 비활성화하면 해당 모듈은 정상적인 문의 과정에서 실제 전송 버튼을 누르는 마지막 액션을 제외하고 테스트합니다. 
@@ -56,18 +54,36 @@ autohqtest.bat 파일로 테스트 프로그램을 실행합니다.
 
 ### 2-2. 테스트 결과 확인
 테스트가 완료되면 **Test Configuration Manager** 창 하단에 결과가 나타납니다.
-![Alt text](images/example2.png)
+예시:
+금일 홈페이지 (03/02)점검입니다
+1.문의하기 테스트 - 이상 없음
+2.마이크로사이트 테스트 - 이상 없음
+3.수신 거부 페이지 테스트 - 이상 없음
+4.신규 문의하기 랜딩 페이지 - 이상 없음
 
 ### 2-3. 로그 파일 확인
 hqtest의 설치 경로에서 logs 파일 안에 자동으로 모든 모듈, 모든 함수 별로 테스트 로그가 저장됩니다 (log 옵션을 활성화했다면). 
-![Alt text](images/example3.png)
+
 
 ### 4. 테스트를 추가, 편집하고 싶은 경우
 /tests 폴더 내에 각 모듈 파일이 있습니다. 1 모듈 = 1 .py파일과 대응됩니다. pytest를 통해 인식하므로, .py파일 이름에는 'test_' prefix가 포함되어 있어야 합니다.
 기본적인 모듈 파일의 구조는 /docs/new_test_template의 예시 파일과 그 주석을 참고하십시오. 
+
 
 ### 5. 옵션을 추가, 삭제하고 싶은 경우
 새로운 옵션을 생성하기 위해서는 기본적으로 config.json에 원하는 옵션의 key, value pair를 작성하고, conftest.py 파일의 settings 함수를 함께 수정해야 합니다.
 Module Setting의 경우, Boolean value만 가능하며, 추가적으로 settings를 수정할 필요가 없지만, 만약 Basic Settings를 추가한다면 settings에서 pytest.<varname>에 새롭게 할당해야 테스트 내에서 해당 옵션을 참조할 수 있습니다.
 환경설정 값이 테스트 내에서 적용되는 프로세스에 관여하는 대표적인 파일들은 **config.json**, **conftest.py**, **option_loader.py**가 있습니다.
 
+
+### Known bugs:
+1. playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at C:\users...
+Playwright가 브라우저 테스트에 필요한 chromium executable 파일을 찾지 못하는 경우입니다. autohqtest.bat 파일을 재실행해보시고, 안된다면 cmd에서 다음 명령어를 순차적으로 입력합니다.
+---
+cd C:\Users\{{사용자 이름}}>\auto_hqtest\autohqtest_venv\Scripts
+activate
+(파이썬 가상환경에 들어와서 (autohqtest_venv)가 보이면)
+playwright install
+---
+
+명령어를 실행했는데도 문제가 지속되면 **Test Configuration Manager** 의 Basic Settings에서 옵션 **Executable Path** 에 등재된 경로에 실제로 headless_shell.exe 파일이 있는지 확인하고 경로가 잘못되었다면 headless_shell.exe가 있는 경로로 업데이트해주세요. 
