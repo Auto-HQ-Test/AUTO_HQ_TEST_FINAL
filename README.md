@@ -77,8 +77,10 @@ Module Setting의 경우, Boolean value만 가능하며, 추가적으로 setting
 
 
 ### Known bugs:
-1. playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at C:\users...
-Playwright가 브라우저 테스트에 필요한 chromium executable 파일을 찾지 못하는 경우입니다. autohqtest.bat 파일을 재실행해보시고, 안된다면 cmd에서 다음 명령어를 순차적으로 입력합니다.
+1. Playwright가 브라우저 테스트에 필요한 chromium executable 파일을 찾지 못하는 경우
+playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at C:\users...
+
+Playwright가 브라우저 테스트에 필요한 chromium executable 파일을 찾지 못하는 경우에는 autohqtest.bat 파일을 재실행해보시고, 안된다면 cmd에서 다음 명령어를 순차적으로 입력합니다.
 
 cd C:\Users\{{사용자 이름}}>\auto_hqtest\autohqtest_venv\Scripts
 activate
