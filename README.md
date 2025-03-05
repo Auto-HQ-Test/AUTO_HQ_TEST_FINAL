@@ -1,6 +1,9 @@
 # AutoHQTest 사용 설명서
-AutoHQTEST는 파수 홈페이지의 종단 테스트를 자동화하고, 테스트 관리를 편리하게 돕는 지원 프로그램입니다. <br>
-Microsoft Playwright와 pytest, PyQt5 라이브러리에 기반하여 작성되었습니다. <br>
+AutoHQTEST는 파수 홈페이지의 종단 테스트 테스트 지원 프로그램입니다. <br>
+각 테스트 모듈별 설정 관리, 헤드리스 브라우저 실행 등의 기능을 제공합니다.  <br>
+GUI를 통해 테스트 설정을 쉽게 확인 및 변경할 수 있으며, 자동 로그 생성 및 이메일링 기능을 통해 문제 보고 과정을 자동화하고, <br>
+모듈식 구조로 설계되어 테스트 추가와 수정이 용이하며 지속적인 웹사이트 품질 모니터링을 가능하게 합니다.  <br>
+Microsoft Playwright와 pytest, PyQt5 라이브러리에 기반하여 개발되었습니다. <br>
 
 ### 1. 설치
 https://github.com/Auto-HQ-Test/AUTO_HQ_TEST_FINAL/releases/tag/test 에서 최신 릴리즈의 autohqtest.bat을 다운받습니다.  
