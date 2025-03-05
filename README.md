@@ -34,19 +34,19 @@ autohqtest.bat 파일로 테스트 프로그램을 실행합니다. <br>
 1. **Enable Email Notification**: 자동으로 등록한 수신자 이메일로 테스트 결과를 발송합니다. 이 기능을 사용하려면 **Sender Email**, **Recipient Email**, **Sender Passkey** 항목에 적합한 값이 등록되어야 합니다. 
 2. **Sender Email**: 발송자 이메일
 3. **Recipient Email**: 수신자 이메일
-4. **Sender Passkey**: 발송자 이메일의 Google App Password가 필요합니다. (참고 링크: https://support.google.com/accounts/answer/185833?hl=en)
-[참고] Sender Email의 경우 Gmail을 사용하는 것을 추천합니다. 
-5. **Executable Path**: Playwright가 Chromium Executable 경로를 인식하지 못했을 때 자동으로 참조되는 주소입니다. 현재 컴퓨터에서 playwright 폴더 내의 headless_shell.exe에 달하는 절대 경로를 입력하면 됩니다. 당장 오류가 발생하지 않는다면 기본 값을 유지해 주세요.
-6. **Browser Type**: 어떤 브라우저로 테스트할지 결정합니다. 현재 기준(v1.0.0) Chromium 밖에 지원하지 않습니다.
-7. **Width**: Headless하지 않게 테스트를 할 경우, 화면에 표시되는 브라우저 창의 가로폭을 결정합니다.
-8. **Height**: Headless하지 않게 테스트를 할 경우, 화면에 표시되는 브라우저 창의 세로폭을 결정합니다.
-9. **Slow Motion**: 각 모듈 테스트시 슬로우모션 효과를 넣습니다. 기본적으로 0으로 하되, 만약 Headless 옵션을 끄고 직접 테스트를 육안으로 관찰한다면 상황에 따라 1000~2000 정도의 수치를 부여하면 관찰하는데 도움이 됩니다.
-10. **Timeout Threshold**: n 밀리초 이상 반응이 없으면 해당 모듈이 실패한 것으로 간주합니다. 기본값은 10초(10000)이며, 상황에 따라 조정할 수 있으나 네트워크 상황에 따라 웹사이트 로딩 속도가 달라지므로, 10000~20000 사이의 수치를 권장합니다.
+4. **Sender Passkey**: 발송자 이메일의 Google App Password가 필요합니다.   <br>
+[참고] Sender Email의 경우 Gmail을 사용하는 것을 추천합니다. https://support.google.com/accounts/answer/185833?hl=en  <br>
+6. **Executable Path**: Playwright가 Chromium Executable 경로를 인식하지 못했을 때 자동으로 참조되는 주소입니다. 현재 컴퓨터에서 playwright 폴더 내의 headless_shell.exe에 도달하는 절대 경로를 입력하면 됩니다. 당장 오류가 발생하지 않는다면 기본 값을 유지해 주세요.<br>
+7. **Browser Type**: 어떤 브라우저로 테스트할지 결정합니다. 현재 기준(v1.0.0) Chromium 밖에 지원하지 않습니다.
+8. **Width**: Headless하지 않게 테스트를 할 경우, 화면에 표시되는 브라우저 창의 가로폭을 결정합니다.
+9. **Height**: Headless하지 않게 테스트를 할 경우, 화면에 표시되는 브라우저 창의 세로폭을 결정합니다.
+10. **Slow Motion**: 각 모듈 테스트시 슬로우모션 효과를 넣습니다. 기본적으로 0으로 하되, 만약 Headless 옵션을 끄고 직접 테스트를 육안으로 관찰한다면 상황에 따라 1000~2000 정도의 수치를 부여하면 관찰하는데 도움이 됩니다.
+11. **Timeout Threshold**: n 밀리초 이상 반응이 없으면 해당 모듈이 실패한 것으로 간주합니다. 기본값은 10초(10000ms)이며, 상황에 따라 조정할 수 있으나 네트워크 상황에 따라 웹사이트 로딩 속도가 달라지므로, 10000~20000 사이의 수치를 권장합니다.
 [번외]
 12. **Test Email**: 웹사이트에서 접수 기능을 테스트시 접수자의 메일에 자동으로 넣는 값입니다(2025 3.2 기준 작동하지 않는 기능이나 종단 테스트에 영향을 주지 않습니다.)
-13. **Test Phone**: 웹사이트에서 접수 기능을 테스트시 접수자의 핸드폰 번호에 자동으로 넣는 값입니다(2025 3.2 기준 작동하지 않는 기능이나 종단 테스트에 영향을 주지 않습니다.)
+13. **Test Phone**: 웹사이트에서 접수 기능을 테스트시 접수자의 핸드폰 번호에 자동으로 넣는 값입니다(2025 3.2 기준 작동하지 않는 기능이나 종단 테스트에 영향을 주지 않습니다.)<br>
 
-설정을 마무리했으면 화면 하단에 **Save and Run** 버튼을 클릭합니다. 
+설정을 마무리했으면 화면 하단에 **Save and Run** 버튼을 클릭합니다. <br>
 
 ### 2-2. 테스트 결과 확인
 테스트가 완료되면 **Test Configuration Manager** 창 하단에 결과가 나타납니다. <br>
@@ -69,7 +69,7 @@ hqtest의 설치 경로에서 logs 파일 안에 자동으로 모든 모듈, 모
 ### 5. 옵션을 추가, 삭제하고 싶은 경우
 새로운 옵션을 생성하기 위해서는 기본적으로 config.json에 원하는 옵션의 key, value pair를 작성하고, conftest.py 파일의 settings 함수를 함께 수정해야 합니다.<br>
 Module Setting의 경우, Boolean value만 가능하며, 추가적으로 settings를 수정할 필요가 없지만, 만약 Basic Settings를 추가한다면 settings에서 pytest.<varname>에 새롭게 할당해야 테스트 내에서 해당 옵션을 참조할 수 있습니다.<br>
-환경설정 값이 테스트 내에서 적용되는 프로세스에 관여하는 대표적인 파일들은 **config.json**, **conftest.py**, **option_loader.py**가 있습니다.<br>
+환경설정 값이 테스트 내에서 적용되는 프로세스에 관여하는 대표적인 파일들은 **config.json**, **conftest.py**, **option_loader.py**가 있습니다. 추가적인 내용은 문의하거나 내부 주석을 참고하십시오. <br>
 
 
 ### Known bugs:
@@ -94,7 +94,7 @@ autohqtest_venv 가상환경 내에서
 set PWDEBUG=1
 pytest .tests\test_cancelSubscription.py -s
 ```
-test_cancelSubscription.py 모듈을 Playwright Inspector 내에서 실행할 수 있습니다.
+이렇게 하면 test_cancelSubscription.py 모듈을 Playwright Inspector 내에서 실행할 수 있습니다.
 
 더 자세한 내용은 공식 문서를 참조해주세요. 
 
